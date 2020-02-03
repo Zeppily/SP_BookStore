@@ -10,6 +10,6 @@ public class BookController {
 
 	@GetMapping("/index")
 	public String hello() {
-		return "Welcome to Geoffrey's BookStore Project!";
+		return "Welcome to Geoffrey's Bookstore Project!";
 	}
 }
