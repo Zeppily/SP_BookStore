@@ -1,13 +1,23 @@
 package com.example.Bookstore.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Book {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
+	private String isbn;
 	private String title;
 	private String author;
 	private int year;
-	private String isbn;
-	private long price;
+	private double price;
 
-	public Book(String title, String author, int year, String isbn, long price) {
+	public Book(String title, String author, int year, String isbn, double price) {
 		this.setAuthor(author);
 		this.setIsbn(isbn);
 		this.setPrice(price);
@@ -47,11 +57,15 @@ public class Book {
 		this.isbn = isbn;
 	}
 
-	public long getPrice() {
+	public double getPrice() {
 		return price;
 	}
 
-	public void setPrice(long price) {
+	public void setPrice(double price) {
 		this.price = price;
+	}
+	
+	public String toString() {
+		return this.getTitle() + " " + this.getAuthor() + " " + this.getIsbn() + " " + this.getYear() + " " + this.getPrice();
 	}
 }
