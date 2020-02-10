@@ -16,7 +16,11 @@ public class Book {
 	private String author;
 	private int year;
 	private double price;
-
+	
+	public Book () {
+		
+	}
+	
 	public Book(String title, String author, int year, String isbn, double price) {
 		this.setAuthor(author);
 		this.setIsbn(isbn);
