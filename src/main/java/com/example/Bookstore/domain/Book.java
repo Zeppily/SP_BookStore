@@ -9,18 +9,19 @@ import javax.persistence.Id;
 public class Book {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+
 	private String isbn;
 	private String title;
 	private String author;
 	private int year;
 	private double price;
-	
-	public Book () {
-		
+
+	public Book() {
+
 	}
-	
+
 	public Book(String title, String author, int year, String isbn, double price) {
 		this.setAuthor(author);
 		this.setIsbn(isbn);
@@ -28,7 +29,16 @@ public class Book {
 		this.setTitle(title);
 		this.setYear(year);
 	}
+	
+	public Long getId() {
+		return id;
+	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	
 	public String getTitle() {
 		return title;
 	}
@@ -68,8 +78,9 @@ public class Book {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
+
 	public String toString() {
-		return this.getTitle() + " " + this.getAuthor() + " " + this.getIsbn() + " " + this.getYear() + " " + this.getPrice();
+		return this.getTitle() + " " + this.getAuthor() + " " + this.getIsbn() + " " + this.getYear() + " "
+				+ this.getPrice();
 	}
 }
