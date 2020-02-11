@@ -3,34 +3,37 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Book Edit</title>
+<link type = "text/css" rel="stylesheet" href="../css/bootstrap.min.css" th:href="@{../css/bootstrap.min.css}" />
 </head>
 <body>
 <h1>Edit Book</h1>
 <div>
+<div class="d-flex p-2 bd-highlight">
 <form th:object="${book}" th:action="@{../save}" action="#" method="post">
-
+<div class="form-group">
 <label for="id">id</label>
-<input type="text" id="id" th:field="*{id}" readonly="readonly" />
+<input class="form-control" type="text" id="id" th:field="*{id}" readonly="readonly" />
 <label for="title">title</label>
-<input type="text" id="title" th:field="*{title}" />
+<input class="form-control" type="text" id="title" th:field="*{title}" />
 <label for="author">Author</label>
-<input type="text" id="author" th:field="*{author}" />
+<input class="form-control" type="text" id="author" th:field="*{author}" />
 <label for="isbn">isbn</label>
-<input type="text" id="isbn" th:field="*{isbn}" />
+<input class="form-control" type="text" id="isbn" th:field="*{isbn}" />
 <label for="year">Year</label>
-<input type="text" id="year" th:field="*{year}" />
+<input class="form-control" type="text" id="year" th:field="*{year}" />
 <label for="price">Price</label>
-<input type="text" id="price" th:field="*{price}" />
-
+<input class="form-control" type="text" id="price" th:field="*{price}" />
+</div>
 <label for="categorylist">Category</label>
 <select id="categorylist" th:field="*{category}" class="form-control">
 <option th:each="category: ${categories}"
 th:value="${category.categoryId}"
 th:text="${category.name}"></option>
 </select>
-
-<input type="submit" value="Save"></input>
+<br />
+<input type="submit" value="Save" class="btn btn-danger"></input>
 </form>
+</div>
 </div>
 </body>
 </html>
