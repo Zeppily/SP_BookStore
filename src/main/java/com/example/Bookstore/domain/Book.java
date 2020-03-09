@@ -22,8 +22,7 @@ public class Book {
 	private int year;
 	private double price;
 
-	@ManyToOne
-	@JsonIgnore
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "categoryId")
 	private Category category;
 
@@ -31,13 +30,7 @@ public class Book {
 
 	}
 
-	public Book(String title, String author, int year, String isbn, double price) {
-		this.setAuthor(author);
-		this.setIsbn(isbn);
-		this.setPrice(price);
-		this.setTitle(title);
-		this.setYear(year);
-	}
+
 
 	public Book(String title, String author, int year, String isbn, double price, Category category) {
 		this.setAuthor(author);
