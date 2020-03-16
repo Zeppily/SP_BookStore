@@ -6,6 +6,16 @@
 <link type = "text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
 <body>
+	<div class="d-flex justify-content-center">
+		<p th:inline="text">Logged in as [[${#httpServletRequest.remoteUser}]]!</p>
+    </div>
+
+	<div class="d-flex justify-content-center">
+	   	<form th:action="@{/logout}" method="post">
+           	<input type="submit" value="Log Out" class="btn btn-danger"/>
+       	</form>
+    </div>
+    
 	<h1>Books</h1>
 	<table class="table table-striped">
 		<tr>
