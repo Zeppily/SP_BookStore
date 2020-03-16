@@ -11,6 +11,8 @@ import com.example.Bookstore.domain.Book;
 import com.example.Bookstore.domain.BookRepository;
 import com.example.Bookstore.domain.Category;
 import com.example.Bookstore.domain.CategoryRepository;
+import com.example.Bookstore.domain.User;
+import com.example.Bookstore.domain.UserRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -21,7 +23,7 @@ public class BookstoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository brepository, CategoryRepository crepository) {
+	public CommandLineRunner bookDemo(BookRepository brepository, CategoryRepository crepository, UserRepository urepository) {
 		return (args) -> {
 			log.info("Adding some categories");
 			crepository.save(new Category("Action"));
@@ -32,10 +34,18 @@ public class BookstoreApplication {
 			brepository.save(new Book("1984", "George Orwell" , 1970, "234-765", 19.99, crepository.findByName("Thriller").get(0)));
 			
 			
+			log.info("adding some users");
+			User user1 = new User ("user", "$2y$10$6KYvLLVG1eZCLOkVvJPFAuVinZq2VFe5FDCFLIDJDMY1QBApbR0Wu", "USER", "user@usermail.com");
+			User user2 = new User ("admin", "$2y$10$OyBdvve8YR4d9aHKtTTq8eATJbd0xlhDagNlEd4h2rMQXzG2nVAHC", "ADMIN", "admin@usermail.com");
+			User user3 = new User ("Geoffrey", "$2y$10$OyBdvve8YR4d9aHKtTTq8eATJbd0xlhDagNlEd4h2rMQXzG2nVAHC", "ADMIN", "admin@usermail.com");
+			urepository.save(user1);
+			urepository.save(user2);
+			urepository.save(user3);
 			
-			
-			
-			
+			log.info("All books");
+			for (Book book : brepository.findAll()) {
+				log.info(book.toString());
+			}			
 			
 		};
 	}
